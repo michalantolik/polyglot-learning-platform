@@ -1,2 +1,5 @@
-# polyglot-learning-platform
-.NET Blazor platform for foreign languages
+# Introduction
+.NET Blazor platform for learning languages.
+
+# High level architecture
+![High Level Architecture](Diagrams/HighLevelArchitecture.png)

@@ -1,0 +1,76 @@
+@startuml
+'title High Level Architecture
+
+left to right direction
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+
+' ==============================
+' Solution
+' ==============================
+package "PolyglotPlatform Solution" {
+
+    component "PolyglotPlatform.Frontend\n(Blazor WebAssembly)" as FRONTEND
+    component "PolyglotPlatfom.Api\n(ASP.NET Core Web API)" as API
+    component "PolyglotPlatfom.Persistence\n(Class Library)" as PERSIST
+    component "PolyglotPlatfom.Domain\n(Class Library)" as DOMAIN
+}
+
+database "SQL Server" as SQL
+
+' ==============================
+' Project References
+' ==============================
+
+API --> PERSIST : references
+PERSIST --> DOMAIN : references
+
+FRONTEND --> API : HTTP calls
+
+' ==============================
+' NuGet Packages
+' ==============================
+
+component "EF Core Design\n8.0.24\n<<NuGet>>" as EF_DESIGN
+component "EF Core SqlServer\n8.0.24\n<<NuGet>>" as EF_SQL
+component "Swashbuckle\n6.6.2\n<<NuGet>>" as SWAGGER
+component "Blazor WebAssembly\n8.0.11\n<<NuGet>>" as BLAZOR
+
+API ..> EF_DESIGN : uses
+API ..> SWAGGER : uses
+
+PERSIST ..> EF_DESIGN : uses
+PERSIST ..> EF_SQL : uses
+
+FRONTEND ..> BLAZOR : uses
+
+' ==============================
+' Runtime Flow
+' ==============================
+
+EF_SQL --> SQL : connects to
+
+' ==============================
+' Notes
+' ==============================
+
+note right of PERSIST
+Contains:
+- AppDbContext
+- Migrations folder
+
+Migrations are stored here
+end note
+
+note right of API
+AppDbContext registered in Program.cs:
+builder.Services.AddDbContext<AppDbContext>()
+
+Connection string in:
+appsettings.json
+
+Migrations added & executed
+from API (startup project)
+end note
+
+@enduml

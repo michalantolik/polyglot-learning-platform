@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolyglotPlatform.Domain", "PolyglotPlatform.Domain\PolyglotPlatform.Domain.csproj", "{FA44EDB8-4CF8-4CBB-ADED-F32811827CEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolyglotPlatform.Persistence", "PolyglotPlatform.Data\PolyglotPlatform.Persistence.csproj", "{AC66DEB7-8A95-46F1-94E6-19615C262A4C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolyglotPlatform.Api", "PolyglotPlatform.Api\PolyglotPlatform.Api.csproj", "{55406968-ED33-4E21-8343-44B879855BFB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PolyglotPlatform.Frontend", "PolyglotPlatform.Frontend\PolyglotPlatform.Frontend.csproj", "{5B3576CC-A015-49CF-9301-044DED2AA699}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA44EDB8-4CF8-4CBB-ADED-F32811827CEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA44EDB8-4CF8-4CBB-ADED-F32811827CEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA44EDB8-4CF8-4CBB-ADED-F32811827CEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA44EDB8-4CF8-4CBB-ADED-F32811827CEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC66DEB7-8A95-46F1-94E6-19615C262A4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC66DEB7-8A95-46F1-94E6-19615C262A4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC66DEB7-8A95-46F1-94E6-19615C262A4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC66DEB7-8A95-46F1-94E6-19615C262A4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55406968-ED33-4E21-8343-44B879855BFB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55406968-ED33-4E21-8343-44B879855BFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55406968-ED33-4E21-8343-44B879855BFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55406968-ED33-4E21-8343-44B879855BFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B3576CC-A015-49CF-9301-044DED2AA699}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B3576CC-A015-49CF-9301-044DED2AA699}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B3576CC-A015-49CF-9301-044DED2AA699}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B3576CC-A015-49CF-9301-044DED2AA699}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
