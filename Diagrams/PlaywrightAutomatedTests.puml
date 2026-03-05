@@ -1,0 +1,86 @@
+@startuml
+'title High Level Architecture - Playwright Automated Tests
+
+left to right direction
+skinparam componentStyle rectangle
+skinparam packageStyle rectangle
+
+' ==============================
+' Solution
+' ==============================
+
+package "PolyglotPlatform Solution" {
+
+    component "PolyglotPlatform.AutomatedTests\n(.NET Test Project)" as TESTS
+    component "SmokeTests.cs\nNUnit Test Class\n(PageTest base class)" as SMOKE
+    file "playwright.runsettings\n(manually added)" as RUNSETTINGS
+}
+
+component "Visual Studio Test Explorer" as VS
+component "Microsoft Edge " as EDGE
+
+' ==============================
+' Project Structure
+' ==============================
+
+TESTS --> SMOKE : contains tests
+TESTS --> RUNSETTINGS : reads configuration
+
+VS --> TESTS : run tests
+
+' ==============================
+' NuGet Packages
+' ==============================
+
+component "Microsoft.Playwright.NUnit\n1.58.0\n<<NuGet>>" as PW_NUNIT
+component "NUnit\n3.14.0\n<<NuGet>>" as NUNIT
+component "NUnit3TestAdapter\n4.5.0\n<<NuGet>>" as ADAPTER
+component "Microsoft.NET.Test.Sdk\n17.8.0\n<<NuGet>>" as TESTSDK
+component "NUnit.Analyzers\n3.9.0\n<<NuGet>>" as ANALYZERS
+component "coverlet.collector\n6.0.0\n<<NuGet>>" as COVERLET
+
+TESTS ..> PW_NUNIT : uses
+TESTS ..> NUNIT : uses
+TESTS ..> ADAPTER : test discovery
+TESTS ..> TESTSDK : test runtime
+TESTS ..> ANALYZERS : code analysis
+TESTS ..> COVERLET : code coverage
+
+PW_NUNIT --> EDGE : launches browser
+
+' ==============================
+' Notes
+' ==============================
+
+note right of RUNSETTINGS
+Added manually to the solution.
+
+Configured in Visual Studio:
+
+Test -> Configure Run Settings
+-> Select Solution Wide runsettings File
+-> playwright.runsettings
+
+Purpose:
+- Force Playwright to use Edge
+- Prevent Playwright from downloading browsers
+- Suitable for corporate laptops
+end note
+
+note right of SMOKE
+Playwright test class.
+
+public class SmokeTests : PageTest
+
+Contains Playwright tests.
+end note
+
+note bottom of EDGE
+RunSettings configuration:
+
+BrowserName = chromium
+Channel = msedge
+Headless = false
+end note
+
+@enduml
