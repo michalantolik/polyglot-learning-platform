@@ -1,0 +1,57 @@
+@startuml
+
+entity Language {
+    +LanguageId : int <<PK>>
+    LanguageCode : string
+    NativeLanguageName : string
+    EnglishLanguageName : string
+    PolishLanguageName : string
+}
+
+entity Level {
+    +LevelId : int <<PK>>
+    LevelName : string
+    LevelOrder : int
+}
+
+entity Course {
+    +CourseId : int <<PK>>
+    NativeCourseTitle : string
+    EnglishCourseTitle : string
+    PolishCourseTitle : string
+    SortOrder : int
+    LanguageId : int <<FK>>
+    LevelId : int <<FK>>
+}
+
+entity Chapter {
+    +ChapterId : int <<PK>>
+    NativeChapterTitle : string
+    EnglishChapterTitle : string
+    PolishChapterTitle : string
+    SortOrder : int
+    CourseId : int <<FK>>
+}
+
+entity ExerciseType {
+    +ExerciseTypeId : int <<PK>>
+    ExerciseTypeName : string
+}
+
+entity Exercise {
+    +ExerciseId : int <<PK>>
+    EnglishPrompt : string
+    PolishPrompt : string
+    Answer : string
+    SortOrder : int
+    ChapterId : int <<FK>>
+    ExerciseTypeId : int <<FK>>
+}
+
+Language ||--o{ Course
+Level ||--o{ Course
+Course ||--o{ Chapter
+Chapter ||--o{ Exercise
+ExerciseType ||--o{ Exercise
+
+@enduml

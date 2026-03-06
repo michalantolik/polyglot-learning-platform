@@ -1,0 +1,22 @@
+@startuml
+'title PolygotPlatform - Entity Delete Rules
+
+skinparam shadowing false
+skinparam linetype ortho
+hide methods
+hide fields
+
+class Language
+class Level
+class Course
+class Chapter
+class Exercise
+class ExerciseType
+
+Language --> Course : Restrict
+Level --> Course : Restrict
+Course --> Chapter : Cascade
+Chapter --> Exercise : Cascade
+ExerciseType --> Exercise : Restrict
+
+@enduml
